@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Atmel Studio Solution File, Format Version 11.00
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "WH_PointerPorts", "WH_PointerPorts\WH_PointerPorts.cproj", "{479C54C7-3A06-475E-85D7-4068C9F00165}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "EEPROM", "EEPROM\EEPROM.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "MeasureBot", "MeasureBot\MeasureBot.cproj", "{4F712F49-C793-4ACB-8310-F070C4110A97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{479C54C7-3A06-475E-85D7-4068C9F00165}.Debug|AVR.ActiveCfg = Debug|AVR
+		{479C54C7-3A06-475E-85D7-4068C9F00165}.Debug|AVR.Build.0 = Debug|AVR
+		{479C54C7-3A06-475E-85D7-4068C9F00165}.Release|AVR.ActiveCfg = Release|AVR
+		{479C54C7-3A06-475E-85D7-4068C9F00165}.Release|AVR.Build.0 = Release|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|AVR.ActiveCfg = Debug|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|AVR.Build.0 = Debug|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.ActiveCfg = Release|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.Build.0 = Release|AVR
+		{4F712F49-C793-4ACB-8310-F070C4110A97}.Debug|AVR.ActiveCfg = Debug|AVR
+		{4F712F49-C793-4ACB-8310-F070C4110A97}.Debug|AVR.Build.0 = Debug|AVR
+		{4F712F49-C793-4ACB-8310-F070C4110A97}.Release|AVR.ActiveCfg = Release|AVR
+		{4F712F49-C793-4ACB-8310-F070C4110A97}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
