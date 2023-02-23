@@ -33,26 +33,26 @@ int main(void)
 	PCMSK1 |= (1<<PCINT11) | (1<<PCINT12);
 	PCICR |= (1<<PCIE0);
 	
-	//ADC
+	//ADC -> 8
 	ADCSRA |= (1<<ADEN) | (1<<ADIE);
 	ADCSRA |= (1<<ADPS0) | (1<<ADPS1) | (1<<ADPS2);
 	ADMUX |= (1<<REFS0) | (1<<MUX0) | (1<<MUX1);
 	ADCSRA |= (1<<ADSC);
 	
-	//16bit Timer alle 1s wird Compare Match ausgelöst
-	TCCR1A |= (1<<WGM12);
+	//16bit Timer alle 1s wird Compare Match ausgelöst -> 4
+	TCCR1B |= (1<<WGM12);
 	TCCR1B |= (1<<CS10) | (1<<CS12);
 	OCR1A = 15625;
-	TIMSK1 |= (1<<OCIE1A);
+	TIMSK1 |=  (1<<OCIE1A);
 	
 	
-	//PWM auf PORTD6
+	//PWM auf PORTD6 -> 5
 	TCCR0A |= (1<<WGM00) | (1<<WGM01);
 	TCCR0B |= (1<<CS00) | (1<<CS02);
 	TCCR0A |= (1<<COM0A1);
 	OCR0A = 2;
 	
-	//UART
+	//UART -> 8
 	UCSR0B |= (1<<RXEN0) | (1<<TXEN0) | (1<<UDRIE0);
 	UCSR0C |= (1<<UPM01) | (1<<UCSZ00) | (1<<UCSZ01);
 	//UBRR0L |= Prescale;
@@ -71,15 +71,14 @@ int main(void)
 			
     while (1) 
     {
-		//lcd_clrscr();
-		//sprintf(buffer, "%d", status);
-		//lcd_puts(buffer);
+		lcd_clrscr();
+		sprintf(buffer, "%d", status);
+		lcd_puts(buffer);
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
 		{
 			if (status %2 == 0)
 			{
 				PORTB |= (1<<PORTB0);
-				status = 0;
 			}
 			else
 			{
