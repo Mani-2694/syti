@@ -48,6 +48,9 @@
             this.radioButton0s = new System.Windows.Forms.RadioButton();
             this.PHSvalueLabel = new System.Windows.Forms.Label();
             this.SystemStatusValueLabel = new System.Windows.Forms.Label();
+            this.ConnectionStatus = new System.Windows.Forms.PictureBox();
+            this.ClearMessageBox = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectionStatus)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -62,8 +65,8 @@
             // StartReceivingButton
             // 
             this.StartReceivingButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.StartReceivingButton.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.StartReceivingButton.Location = new System.Drawing.Point(16, 369);
+            this.StartReceivingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.StartReceivingButton.Location = new System.Drawing.Point(16, 388);
             this.StartReceivingButton.Name = "StartReceivingButton";
             this.StartReceivingButton.Size = new System.Drawing.Size(123, 31);
             this.StartReceivingButton.TabIndex = 0;
@@ -74,8 +77,8 @@
             // StopReceivingButton
             // 
             this.StopReceivingButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.StopReceivingButton.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.StopReceivingButton.Location = new System.Drawing.Point(163, 369);
+            this.StopReceivingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.StopReceivingButton.Location = new System.Drawing.Point(163, 388);
             this.StopReceivingButton.Name = "StopReceivingButton";
             this.StopReceivingButton.Size = new System.Drawing.Size(123, 31);
             this.StopReceivingButton.TabIndex = 1;
@@ -86,8 +89,8 @@
             // GetCurrentValueButton
             // 
             this.GetCurrentValueButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.GetCurrentValueButton.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.GetCurrentValueButton.Location = new System.Drawing.Point(315, 369);
+            this.GetCurrentValueButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.GetCurrentValueButton.Location = new System.Drawing.Point(315, 388);
             this.GetCurrentValueButton.Name = "GetCurrentValueButton";
             this.GetCurrentValueButton.Size = new System.Drawing.Size(123, 31);
             this.GetCurrentValueButton.TabIndex = 2;
@@ -109,7 +112,7 @@
             // OpenConnectionButton
             // 
             this.OpenConnectionButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.OpenConnectionButton.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.OpenConnectionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.OpenConnectionButton.Location = new System.Drawing.Point(252, 22);
             this.OpenConnectionButton.Name = "OpenConnectionButton";
             this.OpenConnectionButton.Size = new System.Drawing.Size(85, 28);
@@ -121,7 +124,7 @@
             // CloseConnectionButton
             // 
             this.CloseConnectionButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CloseConnectionButton.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CloseConnectionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.CloseConnectionButton.Location = new System.Drawing.Point(353, 22);
             this.CloseConnectionButton.Name = "CloseConnectionButton";
             this.CloseConnectionButton.Size = new System.Drawing.Size(85, 28);
@@ -188,7 +191,7 @@
             // 
             this.radioButton1s.AutoSize = true;
             this.radioButton1s.ForeColor = System.Drawing.Color.White;
-            this.radioButton1s.Location = new System.Drawing.Point(133, 426);
+            this.radioButton1s.Location = new System.Drawing.Point(133, 445);
             this.radioButton1s.Name = "radioButton1s";
             this.radioButton1s.Size = new System.Drawing.Size(36, 19);
             this.radioButton1s.TabIndex = 12;
@@ -202,7 +205,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(16, 423);
+            this.label6.Location = new System.Drawing.Point(16, 442);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 21);
             this.label6.TabIndex = 13;
@@ -212,49 +215,53 @@
             // 
             this.radioButton2s.AutoSize = true;
             this.radioButton2s.ForeColor = System.Drawing.Color.White;
-            this.radioButton2s.Location = new System.Drawing.Point(175, 426);
+            this.radioButton2s.Location = new System.Drawing.Point(175, 445);
             this.radioButton2s.Name = "radioButton2s";
             this.radioButton2s.Size = new System.Drawing.Size(36, 19);
             this.radioButton2s.TabIndex = 14;
             this.radioButton2s.TabStop = true;
             this.radioButton2s.Text = "2s";
             this.radioButton2s.UseVisualStyleBackColor = true;
+            this.radioButton2s.CheckedChanged += new System.EventHandler(this.radioButton2s_CheckedChanged);
             // 
             // radioButton3s
             // 
             this.radioButton3s.AutoSize = true;
             this.radioButton3s.ForeColor = System.Drawing.Color.White;
-            this.radioButton3s.Location = new System.Drawing.Point(217, 426);
+            this.radioButton3s.Location = new System.Drawing.Point(217, 445);
             this.radioButton3s.Name = "radioButton3s";
             this.radioButton3s.Size = new System.Drawing.Size(36, 19);
             this.radioButton3s.TabIndex = 15;
             this.radioButton3s.TabStop = true;
             this.radioButton3s.Text = "3s";
             this.radioButton3s.UseVisualStyleBackColor = true;
+            this.radioButton3s.CheckedChanged += new System.EventHandler(this.radioButton3s_CheckedChanged);
             // 
             // radioButton4s
             // 
             this.radioButton4s.AutoSize = true;
             this.radioButton4s.ForeColor = System.Drawing.Color.White;
-            this.radioButton4s.Location = new System.Drawing.Point(258, 426);
+            this.radioButton4s.Location = new System.Drawing.Point(258, 445);
             this.radioButton4s.Name = "radioButton4s";
             this.radioButton4s.Size = new System.Drawing.Size(36, 19);
             this.radioButton4s.TabIndex = 16;
             this.radioButton4s.TabStop = true;
             this.radioButton4s.Text = "4s";
             this.radioButton4s.UseVisualStyleBackColor = true;
+            this.radioButton4s.CheckedChanged += new System.EventHandler(this.radioButton4s_CheckedChanged);
             // 
             // radioButton0s
             // 
             this.radioButton0s.AutoSize = true;
             this.radioButton0s.ForeColor = System.Drawing.Color.White;
-            this.radioButton0s.Location = new System.Drawing.Point(91, 426);
+            this.radioButton0s.Location = new System.Drawing.Point(91, 445);
             this.radioButton0s.Name = "radioButton0s";
             this.radioButton0s.Size = new System.Drawing.Size(36, 19);
             this.radioButton0s.TabIndex = 17;
             this.radioButton0s.TabStop = true;
             this.radioButton0s.Text = "0s";
             this.radioButton0s.UseVisualStyleBackColor = true;
+            this.radioButton0s.CheckedChanged += new System.EventHandler(this.radioButton0s_CheckedChanged);
             // 
             // PHSvalueLabel
             // 
@@ -276,12 +283,35 @@
             this.SystemStatusValueLabel.Size = new System.Drawing.Size(0, 21);
             this.SystemStatusValueLabel.TabIndex = 19;
             // 
+            // ConnectionStatus
+            // 
+            this.ConnectionStatus.BackColor = System.Drawing.Color.Red;
+            this.ConnectionStatus.Location = new System.Drawing.Point(456, 25);
+            this.ConnectionStatus.Name = "ConnectionStatus";
+            this.ConnectionStatus.Size = new System.Drawing.Size(22, 21);
+            this.ConnectionStatus.TabIndex = 20;
+            this.ConnectionStatus.TabStop = false;
+            // 
+            // ClearMessageBox
+            // 
+            this.ClearMessageBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ClearMessageBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ClearMessageBox.Location = new System.Drawing.Point(390, 335);
+            this.ClearMessageBox.Name = "ClearMessageBox";
+            this.ClearMessageBox.Size = new System.Drawing.Size(48, 28);
+            this.ClearMessageBox.TabIndex = 21;
+            this.ClearMessageBox.Text = "Clear";
+            this.ClearMessageBox.UseVisualStyleBackColor = true;
+            this.ClearMessageBox.Click += new System.EventHandler(this.ClearMessageBox_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(978, 478);
+            this.ClientSize = new System.Drawing.Size(978, 497);
+            this.Controls.Add(this.ClearMessageBox);
+            this.Controls.Add(this.ConnectionStatus);
             this.Controls.Add(this.SystemStatusValueLabel);
             this.Controls.Add(this.PHSvalueLabel);
             this.Controls.Add(this.radioButton0s);
@@ -305,6 +335,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectionStatus)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,5 +363,7 @@
         private RadioButton radioButton0s;
         private Label PHSvalueLabel;
         private Label SystemStatusValueLabel;
+        private PictureBox ConnectionStatus;
+        private Button ClearMessageBox;
     }
 }

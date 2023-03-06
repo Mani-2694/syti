@@ -20,32 +20,74 @@ namespace MeasureBotSystem
 
             string[] ports = SerialPort.GetPortNames();
             comboBox1.Items.AddRange(ports);
-            
+        }
+
+        private void ReadResponse(string response)
+        {
+            string message = response.Substring(1, response.Length - 2);
+            try
+            {
+                if (message[0] == 'M')
+                {
+                    string messageData = message.Split("[")[1].Split("]")[0];
+                    string[] data = messageData.Split("|");
+
+                    foreach (string item in data)
+                    {
+                        string data_key = item.Split(":")[0];
+                        string data_value = item.Split(":")[1];
+
+                        if (data_key == "photo_voltage")
+                        {
+                            Invoke(new Action(() => PHSvalueLabel.Text = data_value));
+                        }
+                        else if (data_key == "switch")
+                        {
+                            Invoke(new Action(()=>SystemStatusValueLabel.Text = data_value));
+                        }
+                    }
+                }
+            }
+            catch { }
         }
 
         private void ReceivedData(object sender, SerialDataReceivedEventArgs e)
         {
-            string data = serialPort.ReadExisting();
-            do
+            if(CheckIfPortIsOpen())
             {
-                data += serialPort.ReadExisting();
+                string data = "<" + serialPort.ReadTo("<");
+
+                if (data != "<")
+                {
+                    Invoke(new Action<string>(updateMessageBox), data);
+                    ReadResponse(data);
+                }
             }
-            while (!(data.Contains("\x02") && data.Contains("\x03")));
-            {
-                Invoke(new Action<string>(updateMessageBox), data);
-            }
+
+            //string data = serialPort.ReadExisting();
+            //do
+            //{
+            //    data += serialPort.ReadExisting() + "\n";
+            //    Invoke(new Action<string>(updateMessageBox), data);
+            //}
+            //while (!(data.Contains("\x02") && data.Contains("\x03")));
+            //{
+
+            //}
         }
         private void updateMessageBox(string data)
         {
-            ReceivingMessageBox.Text = data;
+            string date = new DateTime().ToString("d.m.yyyy h:i");
+            ReceivingMessageBox.AppendText(date + "# " + data + Environment.NewLine);
         }
-        
+
         private void OpenConnectionButton_Click(object sender, EventArgs e)
         {
             try
             {
                 serialPort.PortName = comboBox1.Text;
                 serialPort.Open();
+                ConnectionStatus.BackColor = Color.Green;
             }
             catch (Exception ex)
             {
@@ -53,37 +95,67 @@ namespace MeasureBotSystem
             }
         }
         
+        private void CloseConnectionButton_Click(object sender, EventArgs e)
+        {
+            serialPort.Close();
+            ConnectionStatus.BackColor = Color.Red;
+        }
+
+        private void StartReceivingButton_Click(object sender, EventArgs e)
+        {
+            SendMessage("<B;t>");
+        }
+
+        private void StopReceivingButton_Click(object sender, EventArgs e)
+        {
+            SendMessage("<B;q>");
+        }
+
+        private void GetCurrentValueButton_Click(object sender, EventArgs e)
+        {
+            SendMessage("<B;a>");
+        }
+
         private bool CheckIfPortIsOpen()
         {
             return serialPort.IsOpen;
         }
 
-        private void CloseConnectionButton_Click(object sender, EventArgs e)
+        private void SendMessage(string message)
         {
-            serialPort.Close();
+            if(CheckIfPortIsOpen())
+                serialPort.WriteLine(message);
         }
 
-        private void StartReceivingButton_Click(object sender, EventArgs e)
+        private void SendInterval(int interval)
         {
-
+            SendMessage($"<B;tr{interval}>");
         }
 
-        private void StopReceivingButton_Click(object sender, EventArgs e)
+        private void radioButton0s_CheckedChanged(object sender, EventArgs e)
         {
-
+            SendInterval(0);
         }
-
-        private void GetCurrentValueButton_Click(object sender, EventArgs e)
-        {
-            serialPort.WriteLine("<<>");
-        }
-
         private void radioButton1s_CheckedChanged(object sender, EventArgs e)
         {
-            if (CheckIfPortIsOpen())
-            {
-                serialPort.Write("1");
-            }
+            SendInterval(1);
+        }
+        private void radioButton2s_CheckedChanged(object sender, EventArgs e)
+        {
+            SendInterval(2);
+        }
+        private void radioButton3s_CheckedChanged(object sender, EventArgs e)
+        {
+            SendInterval(3);
+        }
+        private void radioButton4s_CheckedChanged(object sender, EventArgs e)
+        {
+            SendInterval(4);
+        }
+
+        private void ClearMessageBox_Click(object sender, EventArgs e)
+        {
+            ReceivingMessageBox.Clear();
         }
     }
 }
