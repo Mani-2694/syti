@@ -77,7 +77,7 @@ namespace MeasureBotSystem
         }
         private void updateMessageBox(string data)
         {
-            string date = new DateTime().ToString("d.m.yyyy h:i");
+            string date = DateTime.Now.ToString("dd.MM.yyyy HH:mm");
             ReceivingMessageBox.AppendText(date + "# " + data + Environment.NewLine);
         }
 
