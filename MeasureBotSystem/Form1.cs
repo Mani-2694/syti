@@ -6,7 +6,7 @@ namespace MeasureBotSystem
     public partial class Form1 : Form
     {
 
-        public SerialPort serialPort;
+        public SerialPort? serialPort;
 
         public Form1()
         {
@@ -55,7 +55,7 @@ namespace MeasureBotSystem
         {
             if(CheckIfPortIsOpen())
             {
-                string data = "<" + serialPort.ReadTo("<");
+                string data = serialPort.ReadTo(">") + ">";
 
                 if (data != "<")
                 {
@@ -63,21 +63,10 @@ namespace MeasureBotSystem
                     ReadResponse(data);
                 }
             }
-
-            //string data = serialPort.ReadExisting();
-            //do
-            //{
-            //    data += serialPort.ReadExisting() + "\n";
-            //    Invoke(new Action<string>(updateMessageBox), data);
-            //}
-            //while (!(data.Contains("\x02") && data.Contains("\x03")));
-            //{
-
-            //}
         }
         private void updateMessageBox(string data)
         {
-            string date = DateTime.Now.ToString("dd.MM.yyyy HH:mm");
+            string date = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
             ReceivingMessageBox.AppendText(date + "# " + data + Environment.NewLine);
         }
 
