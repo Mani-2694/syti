@@ -163,7 +163,6 @@ if(handle_uart_values())
 				char output [100];
 				//sprintf(output,"M;photo_voltage: %s, switch: %d",ausg,systemStatus);
 				sprintf(output,"M%s[%s%s%s%s%s%s%d]", C_TYPE_DELIMITER, "photo_voltage", C_DEVICE_DATA_DELIMITER, ausg, C_DEVICE_DELIMITER, "switch", C_DEVICE_DATA_DELIMITER, systemStatus);
-				lcd_puts(output);
 				uart_put_string(output);
 			}
 		}

@@ -81,7 +81,7 @@ int uart_check_for_value(uint8_t *value)
 	if (!(uart_value & UART_NO_DATA))
 	{
 		*value = ((uint8_t)uart_value);
-		uart_putc(*value);
+		//uart_putc(*value);
 		
 		return 1;
 	}
